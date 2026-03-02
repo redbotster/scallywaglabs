@@ -1,0 +1,296 @@
+/* ── Admin Page ──────────────────────────────────────────────────────────────── */
+
+.admin-main {
+  min-height: 100vh;
+  padding: 7rem 0 4rem;
+  position: relative;
+  z-index: 1;
+}
+
+.admin-nav-tag {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--neon);
+  letter-spacing: 0.15em;
+}
+
+.admin-state { padding: 2rem 0; }
+
+.admin-intro {
+  color: var(--text-dim);
+  font-size: 1rem;
+  max-width: 500px;
+  margin-bottom: 2rem;
+  line-height: 1.8;
+}
+
+.admin-error {
+  margin-top: 1rem;
+  font-family: var(--font-mono);
+  font-size: 0.82rem;
+  color: #f87171;
+  background: rgba(239, 68, 68, 0.08);
+  border: 1px solid rgba(239, 68, 68, 0.25);
+  border-radius: 6px;
+  padding: 0.7rem 1rem;
+  max-width: 480px;
+}
+
+/* ── Loading ─────────────────────────────────────────────────────────────────── */
+
+.admin-loading-wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+  padding: 6rem 0;
+}
+
+.spinner {
+  width: 36px;
+  height: 36px;
+  border: 2px solid var(--border);
+  border-top-color: var(--neon);
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin { to { transform: rotate(360deg); } }
+
+.admin-loading-text {
+  font-family: var(--font-mono);
+  font-size: 0.82rem;
+  color: var(--text-muted);
+  letter-spacing: 0.1em;
+}
+
+/* ── Header row ──────────────────────────────────────────────────────────────── */
+
+.admin-header-row {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.session-badge {
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  color: var(--neon);
+  background: rgba(0, 245, 160, 0.08);
+  border: 1px solid var(--neon-border);
+  border-radius: 4px;
+  padding: 0.4rem 0.85rem;
+  align-self: center;
+}
+
+/* ── Table ───────────────────────────────────────────────────────────────────── */
+
+.app-count {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  letter-spacing: 0.1em;
+  margin-bottom: 1.25rem;
+}
+
+.app-table-wrap {
+  overflow-x: auto;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  background: var(--bg-card);
+}
+
+.app-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.875rem;
+}
+
+.app-table th {
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  color: var(--text-muted);
+  letter-spacing: 0.12em;
+  text-align: left;
+  padding: 0.9rem 1.1rem;
+  border-bottom: 1px solid var(--border);
+  white-space: nowrap;
+}
+
+.app-table td {
+  padding: 0.85rem 1.1rem;
+  border-bottom: 1px solid var(--border);
+  vertical-align: middle;
+  color: var(--text);
+}
+
+.app-table tr:last-child td { border-bottom: none; }
+.app-table tr:hover td { background: var(--bg-card-hover); }
+
+.app-handle { font-weight: 600; color: #fff; }
+.mono  { font-family: var(--font-mono); }
+.dim   { color: var(--text-muted); }
+.small { font-size: 0.78rem; }
+
+.role-pill {
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  letter-spacing: 0.1em;
+  padding: 0.2rem 0.55rem;
+  background: rgba(0, 212, 255, 0.1);
+  color: var(--cyan);
+  border: 1px solid rgba(0, 212, 255, 0.2);
+  border-radius: 3px;
+  white-space: nowrap;
+}
+
+.btn-view {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  color: var(--neon);
+  background: rgba(0, 245, 160, 0.07);
+  border: 1px solid var(--neon-border);
+  border-radius: 4px;
+  padding: 0.3rem 0.75rem;
+  cursor: pointer;
+  transition: background 0.15s;
+  white-space: nowrap;
+}
+.btn-view:hover { background: rgba(0, 245, 160, 0.15); }
+
+.admin-msg-error {
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  color: #f87171;
+  padding: 2rem 0;
+}
+
+.admin-msg-empty {
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  padding: 2rem 0;
+}
+
+/* ── Modal ───────────────────────────────────────────────────────────────────── */
+
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.75);
+  backdrop-filter: blur(4px);
+  z-index: 200;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+}
+
+.modal-box {
+  background: var(--bg-card);
+  border: 1px solid var(--neon-border);
+  border-radius: 12px;
+  padding: 2.5rem;
+  width: 100%;
+  max-width: 660px;
+  max-height: 80vh;
+  overflow-y: auto;
+  position: relative;
+}
+
+.modal-close {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  background: none;
+  border: 1px solid var(--border);
+  color: var(--text-muted);
+  font-size: 0.9rem;
+  width: 2rem;
+  height: 2rem;
+  border-radius: 4px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: color 0.15s, border-color 0.15s;
+}
+.modal-close:hover { color: #fff; border-color: var(--neon-border); }
+
+.modal-title {
+  font-family: var(--font-display);
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: #fff;
+  margin: 0.5rem 0 0.3rem;
+}
+
+.modal-fields {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.75rem 1.5rem;
+  margin-bottom: 1.75rem;
+  padding: 1.25rem;
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+}
+
+.modal-field { display: flex; flex-direction: column; gap: 0.2rem; }
+
+.modal-field-label {
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  color: var(--text-muted);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.modal-field-val {
+  font-size: 0.88rem;
+  color: var(--text);
+  word-break: break-all;
+}
+
+.modal-block { margin-bottom: 1.25rem; }
+
+.modal-block-label {
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  color: var(--neon);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  margin-bottom: 0.5rem;
+}
+
+.modal-block-text {
+  font-size: 0.88rem;
+  color: var(--text-dim);
+  line-height: 1.7;
+  white-space: pre-wrap;
+}
+
+.modal-pre {
+  background: #050810;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 1rem;
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  color: var(--neon);
+  white-space: pre-wrap;
+  word-break: break-all;
+  max-height: 200px;
+  overflow-y: auto;
+}
+
+/* ── Responsive ──────────────────────────────────────────────────────────────── */
+
+@media (max-width: 600px) {
+  .modal-fields { grid-template-columns: 1fr; }
+  .modal-box { padding: 1.5rem; }
+  .app-table { font-size: 0.8rem; }
+}

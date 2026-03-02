@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Admin — Scallywag Labs</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Orbitron:wght@400;700;900&family=Inter:wght@300;400;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="admin.css" />
+</head>
+<body>
+
+  <canvas id="grid-canvas"></canvas>
+
+  <nav>
+    <div class="nav-inner">
+      <a href="/" class="nav-logo">⚡ SCALLYWAG<span>LABS</span></a>
+      <span class="admin-nav-tag">// ADMIN</span>
+    </div>
+  </nav>
+
+  <main class="admin-main">
+    <div class="container">
+
+      <!-- Connect state -->
+      <div id="state-connect" class="admin-state">
+        <div class="section-label">// RESTRICTED ACCESS</div>
+        <h1 class="section-title">Admin Panel</h1>
+        <p class="admin-intro">
+          Connect your wallet to verify identity.<br/>
+          Access restricted to <span class="accent">shutterblock.eth</span> and <span class="accent">redbotster.eth</span>.
+        </p>
+        <button class="btn-primary" id="connect-btn" onclick="connectWallet()">Connect Wallet →</button>
+        <div id="connect-error" class="admin-error hidden"></div>
+      </div>
+
+      <!-- Verifying state -->
+      <div id="state-verifying" class="admin-state hidden">
+        <div class="admin-loading-wrap">
+          <div class="spinner"></div>
+          <p class="admin-loading-text">Resolving ENS identity...</p>
+        </div>
+      </div>
+
+      <!-- Applications state -->
+      <div id="state-applications" class="admin-state hidden">
+        <div class="admin-header-row">
+          <div>
+            <div class="section-label">// AGENT APPLICATIONS</div>
+            <h1 class="section-title">Applications</h1>
+          </div>
+          <div id="session-badge" class="session-badge"></div>
+        </div>
+        <div id="app-container"></div>
+      </div>
+
+    </div>
+  </main>
+
+  <!-- Detail modal -->
+  <div id="modal" class="modal-overlay hidden" onclick="maybeCloseModal(event)">
+    <div class="modal-box">
+      <button class="modal-close" onclick="closeModal()">✕</button>
+      <div id="modal-body"></div>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/ethers@6.7.0/dist/ethers.umd.min.js"></script>
+  <script src="config.js"></script>
+  <script src="main.js"></script>
+  <script src="admin.js"></script>
+</body>
+</html>

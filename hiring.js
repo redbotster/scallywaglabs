@@ -208,7 +208,7 @@ let currentChallenge = null;
 let challengePassed = false;
 let challengeValidator = null;
 let timerInterval = null;
-const CHALLENGE_SECONDS = 30;
+const CHALLENGE_SECONDS = 5;
 
 // ── Init ──────────────────────────────────────────────────────────────────────
 function initChallenge() {
@@ -257,7 +257,11 @@ function startTimer() {
   }, 1000);
 }
 
-initChallenge();
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', initChallenge);
+} else {
+  initChallenge();
+}
 
 // ── Verify ────────────────────────────────────────────────────────────────────
 function verifyChallenge() {
