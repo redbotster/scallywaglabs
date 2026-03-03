@@ -208,7 +208,7 @@ let currentChallenge = null;
 let challengePassed = false;
 let challengeValidator = null;
 let timerInterval = null;
-const CHALLENGE_SECONDS = 120;
+const CHALLENGE_SECONDS = 5;
 
 // ── Init ──────────────────────────────────────────────────────────────────────
 function initChallenge() {
