@@ -1,10 +1,16 @@
 // ── Supabase client (initialised after config.js loads) ───────────────────────
 let supabase = null;
-window.addEventListener('DOMContentLoaded', () => {
+function _hiringInit() {
   if (window.SUPABASE_URL && window.SUPABASE_ANON_KEY) {
-    supabase = window.supabase.createClient(window.SUPABASE_URL, window.SUPABASE_ANON_KEY);
+    try { supabase = window.supabase.createClient(window.SUPABASE_URL, window.SUPABASE_ANON_KEY); } catch(e) {}
   }
-});
+  initChallenge();
+}
+if (document.readyState === 'loading') {
+  window.addEventListener('DOMContentLoaded', _hiringInit);
+} else {
+  _hiringInit();
+}
 
 // ── Challenge Engine ──────────────────────────────────────────────────────────
 // Challenges are procedurally generated and require multi-step reasoning.
@@ -256,8 +262,6 @@ function startTimer() {
     }
   }, 1000);
 }
-
-initChallenge();
 
 // ── Verify ────────────────────────────────────────────────────────────────────
 function verifyChallenge() {
